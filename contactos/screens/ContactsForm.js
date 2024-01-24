@@ -1,4 +1,4 @@
-import {View, Text,StyleSheet} from "react-native"
+import {View, Text,StyleSheet, Alert} from "react-native"
 import {Input,Button} from "@rneui/base"
 import { useState } from "react"
 import {saveContactRest} from "../rest_client/contactos"
@@ -7,6 +7,10 @@ export const ContactsForm = ()=>{
     const [name, setName]=useState();
     const [surname, setSurname]=useState();
     const [phoneNumber, setPhoneNumber]=useState();
+
+    const showMessage=()=>{
+        Alert.alert("CONFIRMACION","Se creó el Contacto")
+    }
     
     const saveContact =()=>{
         console.log("saveContact");
@@ -14,7 +18,8 @@ export const ContactsForm = ()=>{
             name: name,
             surname:surname,
             phoneNumber:phoneNumber
-        }
+        },
+        showMessage()
         );
     }
     return <View style={styles.container}>
@@ -37,7 +42,7 @@ export const ContactsForm = ()=>{
             value={phoneNumber}
             placeholder="TELEFONO"
             onChangeText={(value)=>{
-                setSurname(value);
+                setPhoneNumber(value);
             }}
         />
         <Button

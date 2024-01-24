@@ -1,4 +1,4 @@
-const IP="192.168.0.105";
+const IP="192.168.100.172";
 const PORT=3001;
 const URL="http://"+IP+":"+PORT+"/";
 
@@ -16,7 +16,7 @@ export const getAllContacts=(fnRefreshList)=>{
     );
 }
 
-export const saveContactRest=(contact)=>{
+export const saveContactRest=(contact, fnshowMessage )=>{
     const config={
         method: "POST",
         headers: {
@@ -32,7 +32,7 @@ export const saveContactRest=(contact)=>{
         URL + "contactos",config
     ).then(response=>response.json())
     .then((body)=>{
-        console.log("body");
-    }
-    )
+        fnshowMessage();
+        console.log(body);
+    });
 }

@@ -1,6 +1,7 @@
 import {View, Text,StyleSheet} from "react-native"
 import {Input,Button} from "@rneui/base"
 import { useState } from "react"
+import {saveContactRest} from "../rest_client/contactos"
 
 export const ContactsForm = ()=>{
     const [name, setName]=useState();
@@ -9,6 +10,12 @@ export const ContactsForm = ()=>{
     
     const saveContact =()=>{
         console.log("saveContact");
+        saveContactRest({
+            name: name,
+            surname:surname,
+            phoneNumber:phoneNumber
+        }
+        );
     }
     return <View style={styles.container}>
         <Text>FORMULARIO de Contactos</Text>

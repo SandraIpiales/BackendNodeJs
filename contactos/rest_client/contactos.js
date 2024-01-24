@@ -16,10 +16,23 @@ export const getAllContacts=(fnRefreshList)=>{
     );
 }
 
-export const saveContact=()=>{
-    
+export const saveContactRest=(contact)=>{
+    const config={
+        method: "POST",
+        headers: {
+            "Content-Type" : "application/json"
+        },
+        body:JSON.stringify({
+            nombre: contact.name,
+            apellido: contact.surname,
+            celular: contact.phoneNumber
+        })
+    }
     fetch(
-        URL+ "contactos",
-
-    ).then()
+        URL + "contactos",config
+    ).then(response=>response.json())
+    .then((body)=>{
+        console.log("body");
+    }
+    )
 }

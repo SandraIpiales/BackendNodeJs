@@ -15,3 +15,11 @@ export const getAllContacts=(fnRefreshList)=>{
         }
     );
 }
+
+export const saveContact=()=>{
+    
+    fetch(
+        URL+ "contactos",
+
+    ).then()
+}
